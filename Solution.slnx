@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Financeiro.App/Financeiro.App.Client/Financeiro.App.Client.csproj" Id="9134e58c-4ee7-4a73-b0bb-6179a928a2fe" />
+    <Project Path="src/Financeiro.App/Financeiro.App/Financeiro.App.csproj" Id="b2afc516-a858-474d-89e0-c50f9afeea44" />
+    <Project Path="src/Financeiro.Application/Financeiro.Application.csproj" Id="aaf7e2d7-cbda-404d-804d-ee7d15565f9b" />
+    <Project Path="src/Financeiro.Domain/Financeiro.Domain.csproj" Id="5bcb7864-178e-4eab-81ae-bf6356705b36" />
+    <Project Path="src/Financeiro.Infrastructure/Financeiro.Infrastructure.csproj" Id="1de8a8a8-3db8-449e-b0e4-9520e2f8d90b" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>
