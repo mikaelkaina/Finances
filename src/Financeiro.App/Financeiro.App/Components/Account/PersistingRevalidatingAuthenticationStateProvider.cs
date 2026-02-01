@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using System.Security.Claims;
 using Financeiro.App.Client;
-using Financeiro.App.Data;
+using Financeiro.Infrastructure.Data;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Server;

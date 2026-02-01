@@ -1,4 +1,4 @@
-using Financeiro.App.Data;
+using Financeiro.Infrastructure.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 

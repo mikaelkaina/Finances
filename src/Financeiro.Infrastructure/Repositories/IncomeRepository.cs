@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Financeiro.Application.Interfaces.Repositories;
+using Financeiro.Domain.Entities;
 
-namespace Financeiro.Infrastructure.Repositories
+namespace Financeiro.Infrastructure.Repositories;
+
+public class IncomeRepository : IIncomeRepository
 {
-    internal class IncomeRepository
+    public Task AddAsync(Income income)
     {
+        throw new NotImplementedException();
+    }
+
+    public Task<decimal> GetTotalByMonthAsync(string userId, int month, int year)
+    {
+        throw new NotImplementedException();
     }
 }

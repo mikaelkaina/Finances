@@ -2,13 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace Financeiro.App.Data.Mappings;
+namespace Financeiro.Infrastructure.Data.Mappings;
 
-public class ExpenseMapping : IEntityTypeConfiguration<Expense>
+public class IncomeMapping : IEntityTypeConfiguration<Income>
 {
-    public void Configure(EntityTypeBuilder<Expense> builder)
+    public void Configure(EntityTypeBuilder<Income> builder)
     {
-        builder.ToTable("Expenses");
+        builder.ToTable("Incomes");
 
         builder.HasKey(x => x.Id);
 

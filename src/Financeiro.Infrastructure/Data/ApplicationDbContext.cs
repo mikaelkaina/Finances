@@ -1,12 +1,18 @@
-using Financeiro.App.Data.Mappings;
+using Financeiro.Infrastructure.Data.Mappings;
 using Financeiro.Domain.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Financeiro.App.Data;
+namespace Financeiro.Infrastructure.Data;
 
-public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : IdentityDbContext<ApplicationUser>(options)
+public class ApplicationDbContext
+    : IdentityDbContext<ApplicationUser>
 {
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+
     public DbSet<Income> Incomes => Set<Income>();
     public DbSet<Expense> Expenses => Set<Expense>();
 
@@ -17,6 +23,5 @@ public class ApplicationDbContext(DbContextOptions<ApplicationDbContext> options
         builder.ApplyConfiguration(new IncomeMapping());
         builder.ApplyConfiguration(new ExpenseMapping());
     }
-
 }
 

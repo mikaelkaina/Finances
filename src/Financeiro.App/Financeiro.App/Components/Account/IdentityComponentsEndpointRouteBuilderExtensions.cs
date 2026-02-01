@@ -2,7 +2,7 @@ using System.Security.Claims;
 using System.Text.Json;
 using Financeiro.App.Components.Account.Pages;
 using Financeiro.App.Components.Account.Pages.Manage;
-using Financeiro.App.Data;
+using Financeiro.Infrastructure.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Http.Extensions;
