@@ -10,7 +10,7 @@ public abstract class FinancialEntry
     public string Description { get; protected set; }
     public DateTime Date { get; protected set; }
 
-    protected FinancialEntry(Guid id, string userId, decimal amount, string description, DateTime date)
+    protected FinancialEntry(string userId, decimal amount, string description, DateTime date)
     {
         if (string.IsNullOrWhiteSpace(userId))
             throw new DomainException("UserID é obrigatório.");
@@ -21,7 +21,7 @@ public abstract class FinancialEntry
         if (date.Date > DateTime.UtcNow.Date)
             throw new DomainException("A data não pode ser futura.");
 
-        Id = id;
+       
         UserId = userId;
         Amount = amount;
         Description = description;
