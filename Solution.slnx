@@ -6,5 +6,7 @@
     <Project Path="src/Financeiro.Domain/Financeiro.Domain.csproj" Id="5bcb7864-178e-4eab-81ae-bf6356705b36" />
     <Project Path="src/Financeiro.Infrastructure/Financeiro.Infrastructure.csproj" Id="1de8a8a8-3db8-449e-b0e4-9520e2f8d90b" />
   </Folder>
-  <Folder Name="/tests/" />
+  <Folder Name="/tests/">
+    <Project Path="tests/Domain.Tests/Domain.Tests.csproj" Id="97f6c650-2edb-423e-8293-a073f392c960" />
+  </Folder>
 </Solution>
