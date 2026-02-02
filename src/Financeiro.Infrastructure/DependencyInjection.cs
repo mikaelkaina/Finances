@@ -1,4 +1,6 @@
-﻿using Financeiro.Infrastructure.Data;
+﻿using Financeiro.Application.Interfaces.Repositories;
+using Financeiro.Infrastructure.Data;
+using Financeiro.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -17,6 +19,9 @@ public static class DependencyInjection
             options.UseSqlServer(connectionString));
 
         services.AddDatabaseDeveloperPageExceptionFilter();
+
+        services.AddScoped<IIncomeRepository, IncomeRepository>();
+        services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
         services.AddIdentityCore<ApplicationUser>(options =>
             {

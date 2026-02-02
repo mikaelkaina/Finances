@@ -1,5 +1,8 @@
+using Financeiro.App.Client.Services;
 using Financeiro.App.Components;
 using Financeiro.App.Components.Account;
+using Financeiro.App.Endpoints;
+using Financeiro.Application;
 using Financeiro.Infrastructure;
 using Financeiro.Infrastructure.Data;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -24,7 +27,16 @@ builder.Services.AddAuthentication(options =>
 })
 .AddIdentityCookies();
 
+
+builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddHttpClient<DashboardService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ApplicationUrl"]
+        ?? "https://localhost:5001");
+});
+
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
@@ -47,6 +59,9 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 app.UseAntiforgery();
+
+app.MapDashboardEndpoints();
+
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()

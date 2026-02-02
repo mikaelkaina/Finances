@@ -1,0 +1,60 @@
+﻿@page "/dashboard"
+@using Financeiro.App.Client.Services
+@using Financeiro.Application.DTOs
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+@inject DashboardService DashboardService
+
+<h3>Dashboard</h3>
+
+@if (_isLoading)
+{
+    <p>Carregando dados...</p>
+}
+else if (_summary is null)
+{
+    <p>Nenhum dado encontrado.</p>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Receitas</h5>
+                    <p>@_summary.TotalIncome.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Despesas</h5>
+                    <p>@_summary.TotalExpenses.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5>Saldo</h5>
+                    <p>@_summary.Balance.ToString("C")</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@code {
+    private MonthlySummaryOutput? _summary;
+    private bool _isLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _summary = await DashboardService.GetSummaryAsync();
+        _isLoading = false;
+    }
+}
