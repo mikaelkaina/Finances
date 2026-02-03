@@ -1,4 +1,5 @@
-﻿using Financeiro.Application.UseCases;
+﻿using Financeiro.Application.DTOs;
+using Financeiro.Application.UseCases;
 using System;
 using System.Security.Claims;
 
@@ -27,5 +28,25 @@ public static class DashboardEndpoints
             return Results.Ok(result);
         })
         .RequireAuthorization();
+
+        app.MapPost("/api/incomes", 
+            async (
+                AddIncomeInput input,
+                AddIncomeUseCase useCase,
+                ClaimsPrincipal user) =>
+            {
+                var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+                if (string.IsNullOrEmpty(userId))
+                    return Results.Unauthorized();
+
+                var command = input with { UserId = userId };
+
+                await useCase.ExecuteAsync(command);
+
+                return Results.Ok();
+
+            })
+            .RequireAuthorization();
     }
 }

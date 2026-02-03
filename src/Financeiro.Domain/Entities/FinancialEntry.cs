@@ -21,7 +21,8 @@ public abstract class FinancialEntry
         if (date.Date > DateTime.UtcNow.Date)
             throw new DomainException("A data não pode ser futura.");
 
-       
+        Id = Guid.NewGuid();
+
         UserId = userId;
         Amount = amount;
         Description = description;

@@ -15,7 +15,7 @@ builder.Services.AddScoped(sp =>
         BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
     });
 
-
+builder.Services.AddScoped<IncomeService>();
 builder.Services.AddScoped<DashboardService>();
 
 await builder.Build().RunAsync();

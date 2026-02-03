@@ -1,0 +1,68 @@
+﻿@page "/income"
+@using Financeiro.App.Client.Services
+@using Microsoft.AspNetCore.Authorization
+@attribute [Authorize]
+
+@inject IncomeService IncomeService
+
+<h3>Adicionar Receita</h3>
+
+<div class="mb-3">
+    <label>Valor</label>
+    <input type="number" class="form-control" @bind="Amount" />
+</div>
+
+<div class="mb-3">
+    <label>Descrição</label>
+    <input class="form-control" @bind="Description" />
+</div>
+
+<div class="mb-3">
+    <label>Data</label>
+    <input type="date" class="form-control" @bind="Date" />
+</div>
+
+<button class="btn btn-primary" @onclick="Salvar" disabled="@_loading">
+    Salvar
+</button>
+
+@if (!string.IsNullOrEmpty(_message))
+{
+    <p class="mt-3">@_message</p>
+}
+
+@code {
+    private decimal Amount;
+    private string Description = string.Empty;
+    private DateTime Date = DateTime.Today;
+
+    private bool _loading;
+    private string? _message;
+
+    private async Task Salvar()
+    {
+        _loading = true;
+        _message = null;
+
+        try
+        {
+            await IncomeService.AddAsync(new(
+                Amount,
+                Description,
+                Date));
+
+            _message = "Receita adicionada com sucesso!";
+            Amount = 0;
+            Description = string.Empty;
+            Date = DateTime.Today;
+        }
+        catch
+        {
+            _message = "Erro ao salvar a receita.";
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+}
