@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.DTOs;
+﻿namespace Financeiro.Application.DTOs.Income;
 
 public record AddIncomeInput(
     string UserId,

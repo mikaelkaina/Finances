@@ -60,7 +60,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
+
 app.MapDashboardEndpoints();
+app.MapIncomeEndpoints();
+app.MapExpenseEndpoints();
 
 
 app.MapRazorComponents<App>()

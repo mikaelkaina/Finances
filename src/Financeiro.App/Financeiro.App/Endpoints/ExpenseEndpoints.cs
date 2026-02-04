@@ -1,0 +1,30 @@
+﻿using Financeiro.Application.DTOs.Expense;
+using Financeiro.Application.UseCases;
+using System.Security.Claims;
+
+namespace Financeiro.App.Endpoints;
+
+public static class ExpenseEndpoints
+{
+    public static void MapExpenseEndpoints(this WebApplication app)
+    {
+        app.MapPost("/api/expenses", 
+            async (
+            AddExpenseInput input,
+            AddExpenseUseCase useCase,
+            ClaimsPrincipal user) =>
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                return Results.Unauthorized();
+
+            var command = input with { UserId = userId };
+
+            await useCase.ExecuteAsync(command);
+
+            return Results.Ok();
+        })
+            .RequireAuthorization();
+    }
+}

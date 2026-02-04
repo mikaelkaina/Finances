@@ -1,4 +1,4 @@
-﻿using Financeiro.Application.DTOs;
+﻿using Financeiro.Application.DTOs.Expense;
 using Financeiro.Application.Interfaces.Repositories;
 using Financeiro.Domain.Entities;
 
