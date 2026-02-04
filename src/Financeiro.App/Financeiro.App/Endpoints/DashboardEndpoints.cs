@@ -34,19 +34,38 @@ public static class DashboardEndpoints
                 AddIncomeInput input,
                 AddIncomeUseCase useCase,
                 ClaimsPrincipal user) =>
-            {
-                var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
-                if (string.IsNullOrEmpty(userId))
-                    return Results.Unauthorized();
+            if (string.IsNullOrEmpty(userId))
+            return Results.Unauthorized();
 
-                var command = input with { UserId = userId };
+            var command = input with { UserId = userId };
 
-                await useCase.ExecuteAsync(command);
+            await useCase.ExecuteAsync(command);
 
-                return Results.Ok();
+            return Results.Ok();
 
-            })
+        })
+            .RequireAuthorization();
+
+        app.MapPost("/expenses", 
+            async (
+                AddExpenseInput input,
+                AddExpenseUseCase useCase,
+                ClaimsPrincipal user) =>
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                return Results.Unauthorized();
+
+            var expenseInput = input with { UserId = userId };
+
+            await useCase.ExecuteAsync(expenseInput);
+
+            return Results.Ok();
+        })
             .RequireAuthorization();
     }
 }

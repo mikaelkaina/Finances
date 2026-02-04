@@ -16,6 +16,8 @@ builder.Services.AddScoped(sp =>
     });
 
 builder.Services.AddScoped<IncomeService>();
+builder.Services.AddScoped<ExpenseService>();
+
 builder.Services.AddScoped<DashboardService>();
 
 await builder.Build().RunAsync();
