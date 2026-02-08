@@ -1,4 +1,6 @@
 ﻿using Financeiro.Application.UseCases;
+using Financeiro.Application.UseCases.UseExpense;
+using Financeiro.Application.UseCases.UseIncome;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Financeiro.Application;

@@ -2,7 +2,7 @@
 using Financeiro.Application.Interfaces.Repositories;
 using Financeiro.Domain.Entities;
 
-namespace Financeiro.Application.UseCases;
+namespace Financeiro.Application.UseCases.UseExpense;
 
 public class AddExpenseUseCase
 {

@@ -18,6 +18,14 @@ public class IncomeRepository : IIncomeRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task<IEnumerable<Income>> GetByUserAsync(string userId)
+    {
+        return await _context.Incomes
+        .Where(x => x.UserId == userId)
+        .OrderByDescending(x => x.Date)
+        .ToListAsync();
+    }
+
     public async Task<decimal> GetTotalByMonthAsync(string userId, int month, int year)
     {
         return await _context.Incomes
