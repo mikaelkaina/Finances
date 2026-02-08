@@ -4,7 +4,7 @@ public record AddExpenseRequest(
      decimal Amount,
      string Description,
      DateTime Date
-    );
+);
 
    
 

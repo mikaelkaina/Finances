@@ -3,4 +3,5 @@
 public record AddIncomeRequest(
     decimal Amount,
     string Description,
-    DateTime Date);
+    DateTime Date
+);

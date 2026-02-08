@@ -14,7 +14,13 @@ public class ExpenseService
 
     public async Task AddAsync(AddExpenseRequest request)
     {
-        var response = await _http.PostAsJsonAsync("/expenses", request);
+        var response = await _http.PostAsJsonAsync("api/expenses", request);
         response.EnsureSuccessStatusCode();
+    }
+
+    public async Task<IEnumerable<ExpenseResponse>> GetAllAsync()
+    {
+        return await _http.GetFromJsonAsync<IEnumerable<ExpenseResponse>>("/api/expenses")
+               ?? Enumerable.Empty<ExpenseResponse>();
     }
 }
