@@ -40,7 +40,7 @@ public static class IncomeEndpoints
 
             var result = await useCase.ExecuteAsync(userId);
 
-             return Results.Ok(result);
+            return Results.Ok(result);
         })
             .RequireAuthorization();
     }

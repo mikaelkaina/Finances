@@ -21,9 +21,9 @@ public class IncomeRepository : IIncomeRepository
     public async Task<IEnumerable<Income>> GetByUserAsync(string userId)
     {
         return await _context.Incomes
-        .Where(x => x.UserId == userId)
-        .OrderByDescending(x => x.Date)
-        .ToListAsync();
+            .Where(x => x.UserId == userId)
+            .OrderByDescending(x => x.Date)
+            .ToListAsync();
     }
 
     public async Task<decimal> GetTotalByMonthAsync(string userId, int month, int year)

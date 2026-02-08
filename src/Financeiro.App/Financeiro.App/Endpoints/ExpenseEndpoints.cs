@@ -17,13 +17,29 @@ public static class ExpenseEndpoints
             var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
 
             if (string.IsNullOrEmpty(userId))
-                return Results.Unauthorized();
+                 return Results.Unauthorized();
 
             var command = input with { UserId = userId };
 
             await useCase.ExecuteAsync(command);
 
             return Results.Ok();
+        })
+            .RequireAuthorization();
+
+        app.MapGet("/api/expenses",
+            async (
+            ClaimsPrincipal user,
+            GetExpensesUseCase useCase) =>
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                 return Results.Unauthorized();
+
+            var result = await useCase.ExecuteAsync(userId);
+
+            return Results.Ok(result);
         })
             .RequireAuthorization();
     }

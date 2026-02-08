@@ -16,11 +16,11 @@ public class GetIncomesUseCase
     {
         var incomes = await _repository.GetByUserAsync(userId);
 
-        return incomes.Select(x => new IncomeListItemOutput(
-            x.Id,
-            x.Amount,
-            x.Description,
-            x.Date
+        return incomes.Select(I => new IncomeListItemOutput(
+            I.Id,
+            I.Amount,
+            I.Description,
+            I.Date
         ));
     }
 }
