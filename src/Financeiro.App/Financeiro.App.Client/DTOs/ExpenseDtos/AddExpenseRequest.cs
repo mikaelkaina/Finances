@@ -1,4 +1,4 @@
-﻿namespace Financeiro.App.Client.DTOs;
+﻿namespace Financeiro.App.Client.DTOs.ExpenseDtos;
 
 public record AddExpenseRequest(
      decimal Amount,

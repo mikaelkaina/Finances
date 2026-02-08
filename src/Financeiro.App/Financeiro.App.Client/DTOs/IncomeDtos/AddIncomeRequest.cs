@@ -1,4 +1,4 @@
-﻿namespace Financeiro.App.Client.DTOs;
+﻿namespace Financeiro.App.Client.DTOs.IncomeDtos;
 
 public record AddIncomeRequest(
     decimal Amount,

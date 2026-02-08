@@ -12,6 +12,7 @@ public static class DependencyInjection
         services.AddScoped<GetMonthlySummaryUseCase>();
         services.AddScoped<AddIncomeUseCase>();
         services.AddScoped<AddExpenseUseCase>();
+        services.AddScoped<GetIncomesUseCase>();
 
         return services;
     }

@@ -1,4 +1,4 @@
-﻿using Financeiro.App.Client.DTOs;
+﻿using Financeiro.App.Client.DTOs.IncomeDtos;
 using System.Net.Http.Json;
 
 namespace Financeiro.App.Client.Services;
@@ -16,5 +16,11 @@ public class IncomeService
     {
         var response = await _http.PostAsJsonAsync("api/incomes", request);
         response.EnsureSuccessStatusCode();
+    }
+
+    public async Task<IEnumerable<IncomeResponse>> GetAllAsync()
+    {
+        return await _http.GetFromJsonAsync<IEnumerable<IncomeResponse>>("api/incomes")
+               ?? Enumerable.Empty<IncomeResponse>();
     }
 }

@@ -1,4 +1,5 @@
 ﻿@page "/income"
+@using Financeiro.App.Client.DTOs.IncomeDtos
 @using Financeiro.App.Client.Services
 @using Microsoft.AspNetCore.Authorization
 @attribute [Authorize]
@@ -31,6 +32,37 @@
     <p class="mt-3">@_message</p>
 }
 
+<hr />
+
+<h4>Histórico de Receitas</h4>
+
+@if (_incomes.Any())
+{
+    <table class="table table-striped mt-3">
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var income in _incomes)
+            {
+                <tr>
+                    <td>@income.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@income.Description</td>
+                    <td>R$ @income.Amount</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="text-muted mt-3">Nenhuma receita cadastrada.</p>
+}
+
 @code {
     private decimal Amount;
     private string Description = string.Empty;
@@ -38,6 +70,18 @@
 
     private bool _loading;
     private string? _message;
+
+    private List<IncomeResponse> _incomes = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        await CarregarIncomes();
+    }
+
+    private async Task CarregarIncomes()
+    {
+        _incomes = (await IncomeService.GetAllAsync()).ToList();
+    }
 
     private async Task Salvar()
     {
@@ -52,9 +96,12 @@
                 Date));
 
             _message = "Receita adicionada com sucesso!";
+
             Amount = 0;
             Description = string.Empty;
             Date = DateTime.Today;
+
+            await CarregarIncomes();
         }
         catch
         {
@@ -66,3 +113,4 @@
         }
     }
 }
+

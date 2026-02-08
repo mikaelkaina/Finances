@@ -1,4 +1,4 @@
-﻿using Financeiro.App.Client.DTOs;
+﻿using Financeiro.App.Client.DTOs.ExpenseDtos;
 using System.Net.Http.Json;
 
 namespace Financeiro.App.Client.Services;
