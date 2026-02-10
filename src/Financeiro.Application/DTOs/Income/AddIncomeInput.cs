@@ -4,4 +4,5 @@ public record AddIncomeInput(
     string UserId,
     decimal Amount,
     string Description,
-    DateTime Date);
+    DateTime Date
+);

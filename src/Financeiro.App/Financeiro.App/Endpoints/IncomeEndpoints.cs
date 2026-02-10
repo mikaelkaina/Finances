@@ -43,5 +43,22 @@ public static class IncomeEndpoints
             return Results.Ok(result);
         })
             .RequireAuthorization();
+
+        app.MapDelete("/api/incomes/{id:guid}",
+            async (
+            Guid id,
+            DeleteIncomeUseCase useCase,
+            ClaimsPrincipal user) =>
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                 return Results.Unauthorized();
+
+            await useCase.ExecuteAsync(new(id,userId));
+
+            return Results.NoContent();
+        })
+            .RequireAuthorization();
     }
 }

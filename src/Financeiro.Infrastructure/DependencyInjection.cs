@@ -24,9 +24,9 @@ public static class DependencyInjection
         services.AddScoped<IExpenseRepository, ExpenseRepository>();
 
         services.AddIdentityCore<ApplicationUser>(options =>
-            {
-                options.SignIn.RequireConfirmedAccount = true;
-            })
+        {
+            options.SignIn.RequireConfirmedAccount = true;
+        })
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddSignInManager()
             .AddDefaultTokenProviders();

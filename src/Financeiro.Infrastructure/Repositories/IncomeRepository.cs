@@ -18,6 +18,11 @@ public class IncomeRepository : IIncomeRepository
         await _context.SaveChangesAsync();
     }
 
+    public async Task<Income?> GetByIdAsync(Guid id)
+    {
+        return await _context.Incomes.FirstOrDefaultAsync(x => x.Id == id);
+    }
+
     public async Task<IEnumerable<Income>> GetByUserAsync(string userId)
     {
         return await _context.Incomes
@@ -34,5 +39,15 @@ public class IncomeRepository : IIncomeRepository
             x.Date.Month == month && 
             x.Date.Year == year)
             .SumAsync(x => x.Amount);
+    }
+
+    public void Remove(Income income)
+    {
+        _context.Incomes.Remove(income);
+    }
+
+    public async Task SaveChangesAsync()
+    {
+        await _context.SaveChangesAsync();
     }
 }

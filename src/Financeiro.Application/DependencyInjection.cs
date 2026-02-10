@@ -14,6 +14,7 @@ public static class DependencyInjection
         services.AddScoped<AddExpenseUseCase>();
         services.AddScoped<GetIncomesUseCase>();
         services.AddScoped<GetExpensesUseCase>();
+        services.AddScoped<DeleteIncomeUseCase>();
 
         return services;
     }
