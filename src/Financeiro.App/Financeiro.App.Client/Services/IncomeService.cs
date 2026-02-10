@@ -23,4 +23,10 @@ public class IncomeService
         return await _http.GetFromJsonAsync<IEnumerable<IncomeResponse>>("api/incomes")
                ?? Enumerable.Empty<IncomeResponse>();
     }
+
+    public async Task DeleteAsync(Guid incomeId)
+    {
+        var response = await _http.DeleteAsync($"api/incomes/{incomeId}");
+        response.EnsureSuccessStatusCode();
+    }
 }

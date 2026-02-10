@@ -44,6 +44,7 @@
                 <th>Data</th>
                 <th>Descrição</th>
                 <th>Valor</th>
+                <th style="width: 120px"></th>
             </tr>
         </thead>
         <tbody>
@@ -53,6 +54,13 @@
                     <td>@income.Date.ToString("dd/MM/yyyy")</td>
                     <td>@income.Description</td>
                     <td>R$ @income.Amount</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm"
+                                @onclick="() => Apagar(income.Id)"
+                                disabled="@_loading">
+                            Apagar
+                        </button>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -106,6 +114,27 @@ else
         catch
         {
             _message = "Erro ao salvar a receita.";
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task Apagar(Guid incomeId)
+    {
+        _loading = true;
+        _message = null;
+
+        try
+        {
+            await IncomeService.DeleteAsync(incomeId);
+            _message = "Receita apagada com sucesso!";
+            await CarregarIncomes();
+        }
+        catch
+        {
+            _message = "Erro ao apagar a receita.";
         }
         finally
         {
