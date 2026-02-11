@@ -15,7 +15,6 @@ public class IncomeRepository : IIncomeRepository
     public async Task AddAsync(Income income)
     {
         await _context.Incomes.AddAsync(income);
-        await _context.SaveChangesAsync();
     }
 
     public async Task<Income?> GetByIdAsync(Guid id)
@@ -44,10 +43,5 @@ public class IncomeRepository : IIncomeRepository
     public void Remove(Income income)
     {
         _context.Incomes.Remove(income);
-    }
-
-    public async Task SaveChangesAsync()
-    {
-        await _context.SaveChangesAsync();
     }
 }

@@ -9,5 +9,4 @@ public interface IExpenseRepository
     Task<IEnumerable<Expense>> GetByUserAsync(string userId);
     Task<Expense?> GetByIdAsync(Guid id);
     void Remove(Expense expense);
-    Task SaveChangesAsync();
 }

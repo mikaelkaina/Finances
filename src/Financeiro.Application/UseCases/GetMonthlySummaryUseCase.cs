@@ -30,6 +30,7 @@ public class GetMonthlySummaryUseCase
         return new MonthlySummaryOutput(
             totalIncome,
             totalExpense,
-            totalIncome - totalExpense);
+            totalIncome - totalExpense
+        );
     }
 }

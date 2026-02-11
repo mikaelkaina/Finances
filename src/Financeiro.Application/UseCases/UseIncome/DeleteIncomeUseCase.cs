@@ -1,4 +1,5 @@
 ﻿using Financeiro.Application.DTOs.Income;
+using Financeiro.Application.Interfaces;
 using Financeiro.Application.Interfaces.Repositories;
 using Financeiro.Domain.Exceptions;
 
@@ -7,10 +8,12 @@ namespace Financeiro.Application.UseCases.UseIncome;
 public class DeleteIncomeUseCase
 {
     private readonly IIncomeRepository _repository;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public DeleteIncomeUseCase(IIncomeRepository repository)
+    public DeleteIncomeUseCase(IIncomeRepository repository, IUnitOfWork unitOfWork)
     {
         _repository = repository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task ExecuteAsync(DeleteIncomeInput input)
@@ -24,6 +27,6 @@ public class DeleteIncomeUseCase
             throw new DomainException("Você não tem permissão para apagar esta receita.");
 
         _repository.Remove(income);
-        await _repository.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync();
     }
 }

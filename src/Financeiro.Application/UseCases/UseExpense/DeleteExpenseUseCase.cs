@@ -1,4 +1,5 @@
 ﻿using Financeiro.Application.DTOs.Expense;
+using Financeiro.Application.Interfaces;
 using Financeiro.Application.Interfaces.Repositories;
 using Financeiro.Domain.Exceptions;
 
@@ -7,9 +8,11 @@ namespace Financeiro.Application.UseCases.UseExpense;
 public class DeleteExpenseUseCase
 {
     private readonly IExpenseRepository _repository;
-    public DeleteExpenseUseCase(IExpenseRepository repository)
+    private readonly IUnitOfWork _unitOfWork;
+    public DeleteExpenseUseCase(IExpenseRepository repository, IUnitOfWork unitOfWork)
     {
         _repository = repository;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task ExecuteAsync(DeleteExpenseInput input)
@@ -23,6 +26,6 @@ public class DeleteExpenseUseCase
             throw new DomainException("Usuário não autorizado a deletar esta despesa.");
 
         _repository.Remove(expense);
-        await _repository.SaveChangesAsync();
+        await _unitOfWork.SaveChangesAsync();
     }
 }

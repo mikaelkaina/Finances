@@ -9,5 +9,4 @@ public interface IIncomeRepository
     Task<IEnumerable<Income>> GetByUserAsync(string userId);
     Task<Income?> GetByIdAsync(Guid id);
     void Remove(Income income);
-    Task SaveChangesAsync();
 }

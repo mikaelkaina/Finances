@@ -15,7 +15,6 @@ public class ExpenseRepository : IExpenseRepository
     public async Task AddAsync(Expense expense)
     {
         await _context.Expenses.AddAsync(expense);
-        await _context.SaveChangesAsync();
     }
 
     public async Task<Expense?> GetByIdAsync(Guid id)
@@ -44,10 +43,5 @@ public class ExpenseRepository : IExpenseRepository
     public void Remove(Expense expense)
     {
         _context.Expenses.Remove(expense);
-    }
-
-    public async Task SaveChangesAsync()
-    {
-        await _context.SaveChangesAsync();
     }
 }
