@@ -23,4 +23,10 @@ public class ExpenseService
         return await _http.GetFromJsonAsync<IEnumerable<ExpenseResponse>>("/api/expenses")
                ?? Enumerable.Empty<ExpenseResponse>();
     }
+
+    public async Task DeleteAsync(Guid expenseId)
+    {
+        var response = await _http.DeleteAsync($"api/expenses/{expenseId}");
+        response.EnsureSuccessStatusCode();
+    }
 }

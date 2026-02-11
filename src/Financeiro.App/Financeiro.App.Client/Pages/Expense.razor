@@ -44,15 +44,23 @@
                 <th>Data</th>
                 <th>Descrição</th>
                 <th>Valor</th>
+                <th style="width: 120px"></th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var expense in _expenses)
+            @foreach (var income in _expenses)
             {
                 <tr>
-                    <td>@expense.Date.ToString("dd/MM/yyyy")</td>
-                    <td>@expense.Description</td>
-                    <td>R$ @expense.Amount</td>
+                    <td>@income.Date.ToString("dd/MM/yyyy")</td>
+                    <td>@income.Description</td>
+                    <td>R$ @income.Amount</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm"
+                                @onclick="() => Apagar(income.Id)"
+                                disabled="@_loading">
+                            Apagar
+                        </button>
+                    </td>
                 </tr>
             }
         </tbody>
@@ -106,6 +114,27 @@ else
         catch
         {
             _message = "Erro ao salvar a despesa.";
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private async Task Apagar(Guid expenseId)
+    {
+        _loading = true;
+        _message = null;
+
+        try
+        {
+            await ExpenseService.DeleteAsync(expenseId);
+            _message = "Despesa apagada com sucesso!";
+            await CarregarExpenses();
+        }
+        catch
+        {
+            _message = "Erro ao apagar a despesa.";
         }
         finally
         {
