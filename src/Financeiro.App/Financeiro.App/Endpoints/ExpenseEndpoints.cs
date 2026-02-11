@@ -25,7 +25,7 @@ public static class ExpenseEndpoints
 
             return Results.Ok();
         })
-            .RequireAuthorization();
+            .RequireAuthorization ();
 
         app.MapGet("/api/expenses",
             async (
@@ -40,6 +40,23 @@ public static class ExpenseEndpoints
             var result = await useCase.ExecuteAsync(userId);
 
             return Results.Ok(result);
+        })
+            .RequireAuthorization();
+
+        app.MapDelete("/api/expenses/{id:guid}",
+            async (
+            Guid id,
+            DeleteExpenseUseCase useCase,
+            ClaimsPrincipal user) =>
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                 return Results.Unauthorized();
+
+            await useCase.ExecuteAsync(new(id,userId));
+
+            return Results.NoContent();
         })
             .RequireAuthorization();
     }
