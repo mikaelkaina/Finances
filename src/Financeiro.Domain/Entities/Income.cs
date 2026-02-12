@@ -6,4 +6,9 @@ public sealed class Income : FinancialEntry
          : base(userId, amount, description, date)
     {
     }
+
+    public void UpdateIncome(decimal amount,string description, DateTime date)
+    {
+        Update(amount, description, date);
+    }
 }

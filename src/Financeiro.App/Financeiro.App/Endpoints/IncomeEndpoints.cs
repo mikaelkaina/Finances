@@ -60,5 +60,28 @@ public static class IncomeEndpoints
             return Results.NoContent();
         })
             .RequireAuthorization();
+
+        app.MapPut("/api/incomes/{id:guid}",
+            async (
+            Guid id,
+            UpdateIncomeInput request,
+            UpdateIncomeUseCase useCase,
+            ClaimsPrincipal user) =>
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                 return Results.Unauthorized();
+
+                await useCase.ExecuteAsync(
+                request with
+                {
+                    IncomeId = id,
+                    UserId = userId
+                });
+
+                return Results.NoContent();
+            })
+            .RequireAuthorization();
     }
 }

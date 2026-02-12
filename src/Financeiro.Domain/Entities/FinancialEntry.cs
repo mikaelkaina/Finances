@@ -12,7 +12,29 @@ public abstract class FinancialEntry
 
     protected FinancialEntry(string userId, decimal amount, string description, DateTime date)
     {
+        Validate(userId, amount, date);
+
+        Id = Guid.NewGuid();
+        UserId = userId;
+        Amount = amount;
+        Description = description;
+        Date = date; 
+    }
+
+    protected void Update(decimal amount, string description, DateTime date)
+    {
+        Validate(UserId, amount, date);
+
+        Amount = amount;
+        Description = description;
+        Date = date;
+    }
+
+    private static void Validate(string userId, decimal amount, DateTime date)
+    {
+
         if (string.IsNullOrWhiteSpace(userId))
+
             throw new DomainException("UserID é obrigatório.");
 
         if (amount <= 0)
@@ -20,12 +42,5 @@ public abstract class FinancialEntry
 
         if (date.Date > DateTime.UtcNow.Date)
             throw new DomainException("A data não pode ser futura.");
-
-        Id = Guid.NewGuid();
-
-        UserId = userId;
-        Amount = amount;
-        Description = description;
-        Date = date;
     }
 }

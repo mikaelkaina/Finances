@@ -20,6 +20,8 @@ public static class DependencyInjection
         services.AddScoped<DeleteIncomeUseCase>();
         services.AddScoped<DeleteExpenseUseCase>();
 
+        services.AddScoped<UpdateIncomeUseCase>();
+
         return services;
     }
 }
