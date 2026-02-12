@@ -51,16 +51,57 @@
             @foreach (var income in _incomes)
             {
                 <tr>
-                    <td>@income.Date.ToString("dd/MM/yyyy")</td>
-                    <td>@income.Description</td>
-                    <td>R$ @income.Amount</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm"
-                                @onclick="() => Apagar(income.Id)"
-                                disabled="@_loading">
-                            Apagar
-                        </button>
-                    </td>
+                    @if (_editingIncomeId == income.Id)
+                    {
+                        <td>
+                            <input type="date" class="form-control"
+                                   @bind="_editDate" />
+                        </td>
+                        <td>
+                            <input class="form-control"
+                                   @bind="_editDescription" />
+                        </td>
+                        <td>
+                            <input type="number" class="form-control"
+                                   @bind="_editAmount" />
+                        </td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-success btn-sm"
+                                        @onclick="() => SalvarEdicao(income.Id)"
+                                        disabled="@_loading">
+                                    Salvar
+                                </button>
+
+                                <button class="btn btn-secondary btn-sm"
+                                        @onclick="CancelarEdicao"
+                                        disabled="@_loading">
+                                    Cancelar
+                                </button>
+                            </div>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>@income.Date.ToString("dd/MM/yyyy")</td>
+                        <td>@income.Description</td>
+                        <td>R$ @income.Amount</td>
+                        <td>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-warning btn-sm"
+                                        @onclick="() => Editar(income)"
+                                        disabled="@_loading">
+                                    Editar
+                                </button>
+
+                                <button class="btn btn-danger btn-sm"
+                                        @onclick="() => Apagar(income.Id)"
+                                        disabled="@_loading">
+                                    Apagar
+                                </button>
+                            </div>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
@@ -72,6 +113,13 @@ else
 }
 
 @code {
+
+    private Guid? _editingIncomeId;
+
+    private decimal _editAmount;
+    private string _editDescription = string.Empty;
+    private DateTime _editDate;
+
     private decimal Amount;
     private string Description = string.Empty;
     private DateTime Date = DateTime.Today;
@@ -135,6 +183,48 @@ else
         catch
         {
             _message = "Erro ao apagar a receita.";
+        }
+        finally
+        {
+            _loading = false;
+        }
+    }
+
+    private void Editar(IncomeResponse income)
+    {
+        _editingIncomeId = income.Id;
+
+        _editAmount = income.Amount;
+        _editDescription = income.Description;
+        _editDate = income.Date;
+    }
+
+    private void CancelarEdicao()
+    {
+        _editingIncomeId = null;
+    }
+
+    private async Task SalvarEdicao(Guid id)
+    {
+        _loading = true;
+        _message = null;
+
+        try
+        {
+            await IncomeService.UpdateAsync(id, new(
+                _editAmount,
+                _editDescription,
+                _editDate));
+
+            _message = "Receita atualizada com sucesso!";
+
+            _editingIncomeId = null;
+
+            await CarregarIncomes();
+        }
+        catch
+        {
+            _message = "Erro ao atualizar a receita.";
         }
         finally
         {

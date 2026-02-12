@@ -29,4 +29,14 @@ public class IncomeService
         var response = await _http.DeleteAsync($"api/incomes/{incomeId}");
         response.EnsureSuccessStatusCode();
     }
+
+    public async Task UpdateAsync(Guid incomeId, UpdateIncomeRequest request)
+    {
+        var response = await _http.PutAsJsonAsync(
+            $"api/incomes/{incomeId}",
+            request
+        );
+
+        response.EnsureSuccessStatusCode();
+    }
 }
