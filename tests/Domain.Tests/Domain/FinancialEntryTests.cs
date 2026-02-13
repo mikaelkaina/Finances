@@ -2,7 +2,7 @@ using Financeiro.Domain.Entities;
 using Financeiro.Domain.Exceptions;
 using FluentAssertions;
 
-namespace Domain.Tests;
+namespace Finances.Tests.Domain;
 
 public class FinancialEntryTests
 {

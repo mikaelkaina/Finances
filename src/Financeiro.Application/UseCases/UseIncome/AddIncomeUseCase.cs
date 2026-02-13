@@ -22,7 +22,8 @@ public class AddIncomeUseCase
             input.UserId,
             input.Amount,
             input.Description,
-            input.Date);
+            input.Date
+        );
 
         await _repository.AddAsync(income);
         await _unitOfWork.SaveChangesAsync();

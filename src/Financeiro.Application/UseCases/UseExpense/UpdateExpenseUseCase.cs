@@ -27,7 +27,6 @@ public class UpdateExpenseUseCase
             throw new DomainException("Você não tem permissão para editar esta receita.");
 
         expense.UpdateExpense(input.Amount, input.Description, input.Date);
-
         await _unitOfWork.SaveChangesAsync();
 
     }
