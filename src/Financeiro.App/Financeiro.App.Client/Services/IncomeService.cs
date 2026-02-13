@@ -32,11 +32,7 @@ public class IncomeService
 
     public async Task UpdateAsync(Guid incomeId, UpdateIncomeRequest request)
     {
-        var response = await _http.PutAsJsonAsync(
-            $"api/incomes/{incomeId}",
-            request
-        );
-
+        var response = await _http.PutAsJsonAsync($"api/incomes/{incomeId}", request);
         response.EnsureSuccessStatusCode();
     }
 }

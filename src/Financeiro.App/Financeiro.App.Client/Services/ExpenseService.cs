@@ -29,4 +29,10 @@ public class ExpenseService
         var response = await _http.DeleteAsync($"api/expenses/{expenseId}");
         response.EnsureSuccessStatusCode();
     }
+
+    public async Task UpdateAsync(Guid expenseId, UpdateExpenseRequest request)
+    {
+        var response = await _http.PutAsJsonAsync($"api/expenses/{expenseId}", request);
+        response.EnsureSuccessStatusCode();
+    }
 }

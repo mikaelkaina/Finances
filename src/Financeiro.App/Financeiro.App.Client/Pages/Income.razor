@@ -214,7 +214,8 @@ else
             await IncomeService.UpdateAsync(id, new(
                 _editAmount,
                 _editDescription,
-                _editDate));
+                _editDate
+            ));
 
             _message = "Receita atualizada com sucesso!";
 
