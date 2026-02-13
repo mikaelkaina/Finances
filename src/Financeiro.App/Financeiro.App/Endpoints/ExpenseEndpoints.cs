@@ -59,5 +59,23 @@ public static class ExpenseEndpoints
             return Results.NoContent();
         })
             .RequireAuthorization();
+
+        app.MapPut("/api/expenses/{id:guid}",
+            async (
+            Guid Id,
+            UpdateExpenseInput input,
+            UpdateExpenseUseCase useCase,
+            ClaimsPrincipal user) =>
+        {
+            var userId = user.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(userId))
+                 return Results.Unauthorized();
+
+            await useCase.ExecuteAsync(input with { ExpenseId = Id, UserId = userId });
+
+            return Results.NoContent();
+        })
+            .RequireAuthorization();
     }
 }

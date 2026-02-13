@@ -6,4 +6,9 @@ public sealed class Expense : FinancialEntry
         : base(userId, amount, description, date)
     {
     }
+
+    public void UpdateExpense(decimal amount, string description, DateTime date)
+    {
+        Update(amount, description, date);
+    }
 }

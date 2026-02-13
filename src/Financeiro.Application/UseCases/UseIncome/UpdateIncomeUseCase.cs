@@ -26,11 +26,7 @@ public class UpdateIncomeUseCase
         if(income.UserId != input.UserId)
             throw new DomainException("Você não tem permissão para editar esta receita.");
 
-        income.UpdateIncome(
-            input.Amount,
-            input.Description,
-            input.Date
-        );
+        income.UpdateIncome(input.Amount, input.Description, input.Date);
 
         await _unitOfWork.SaveChangesAsync();
     }

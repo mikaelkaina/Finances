@@ -64,7 +64,7 @@ public static class IncomeEndpoints
         app.MapPut("/api/incomes/{id:guid}",
             async (
             Guid id,
-            UpdateIncomeInput request,
+            UpdateIncomeInput input,
             UpdateIncomeUseCase useCase,
             ClaimsPrincipal user) =>
         {
@@ -73,15 +73,10 @@ public static class IncomeEndpoints
             if (string.IsNullOrEmpty(userId))
                  return Results.Unauthorized();
 
-                await useCase.ExecuteAsync(
-                request with
-                {
-                    IncomeId = id,
-                    UserId = userId
-                });
+            await useCase.ExecuteAsync(input with { IncomeId = id,UserId = userId });
 
-                return Results.NoContent();
-            })
+            return Results.NoContent();
+        })
             .RequireAuthorization();
     }
 }
