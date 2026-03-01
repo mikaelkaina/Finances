@@ -1,4 +1,5 @@
 Financeiro.App
+
 Aplicação web de controle financeiro desenvolvida com ASP.NET Core utilizando o template Blazor Web App (.NET 8), aplicando Clean Architecture e princípios de Domain-Driven Design (DDD).
 
 Sobre o Projeto
