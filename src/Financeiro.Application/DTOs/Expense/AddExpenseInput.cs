@@ -4,4 +4,5 @@ public record AddExpenseInput(
     string UserId,
     decimal Amount,
     string Description,
-    DateTime Date);
+    DateTime Date
+);
