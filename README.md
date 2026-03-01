@@ -16,7 +16,6 @@ Tecnologias
 - Unit of Work
 
 Funcionalidades
-
 Receitas
 - Cadastro de receitas
 - Edição inline de receitas
