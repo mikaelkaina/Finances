@@ -10,6 +10,7 @@ Funcionalidades
 - Cadastro, edição e remoção de **Despesas**
 - Dashboard com total mensal de receitas, despesas e saldo consolidado
 - Validações de domínio (valor positivo, data válida, ownership por usuário)
+<img width="1919" height="1079" alt="Captura de tela 2026-02-12 133505" src="https://github.com/user-attachments/assets/1be4026f-1142-4c51-875c-97ab201e78a1" />
 
 Tecnologias
 - ASP.NET Core Identity
