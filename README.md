@@ -15,7 +15,9 @@ Tecnologias
 - Domain-Driven Design (DDD)
 - Unit of Work
 
-Funcionalidades
+
+Funcionalidades:
+
 Receitas
 - Cadastro de receitas
 - Edição inline de receitas
