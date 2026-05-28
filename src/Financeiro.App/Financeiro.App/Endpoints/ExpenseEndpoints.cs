@@ -1,5 +1,6 @@
 ﻿using Financeiro.Application.DTOs.Expense;
-using Financeiro.Application.UseCases.UseExpense;
+using Financeiro.Application.UseCases.UseExpense.Commands;
+using Financeiro.Application.UseCases.UseExpense.Queries;
 using System.Security.Claims;
 
 namespace Financeiro.App.Endpoints;
