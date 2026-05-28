@@ -1,6 +1,6 @@
 ﻿using Financeiro.Domain.Entities;
 
-namespace Financeiro.Application.Interfaces.Repositories;
+namespace Financeiro.Domain.Interfaces.Repositories;
 
 public interface IIncomeRepository 
 {

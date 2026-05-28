@@ -1,7 +1,6 @@
-﻿using Financeiro.Application.Interfaces.Repositories;
-using Financeiro.Application.UseCases.UseIncome.Queries.Get;
+﻿using Financeiro.Domain.Interfaces.Repositories;
 
-namespace Financeiro.Application.UseCases.UseIncome.Queries;
+namespace Financeiro.Application.UseCases.UseIncome.Queries.Get;
 
 public class GetIncomesUseCase
 {

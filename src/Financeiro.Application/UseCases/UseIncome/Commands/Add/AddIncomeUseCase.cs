@@ -1,6 +1,6 @@
-﻿using Financeiro.Application.Interfaces;
-using Financeiro.Application.Interfaces.Repositories;
-using Financeiro.Domain.Entities;
+﻿using Financeiro.Domain.Entities;
+using Financeiro.Domain.Interfaces;
+using Financeiro.Domain.Interfaces.Repositories;
 
 namespace Financeiro.Application.UseCases.UseIncome.Commands.Add;
 

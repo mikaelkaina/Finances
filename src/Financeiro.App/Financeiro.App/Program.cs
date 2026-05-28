@@ -3,7 +3,7 @@ using Financeiro.App.Components;
 using Financeiro.App.Components.Account;
 using Financeiro.App.Endpoints;
 using Financeiro.Application;
-using Financeiro.Application.Interfaces;
+using Financeiro.Domain.Interfaces;
 using Financeiro.Infrastructure;
 using Financeiro.Infrastructure.Data;
 using Microsoft.AspNetCore.Components.Authorization;

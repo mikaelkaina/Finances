@@ -5,7 +5,7 @@ using Financeiro.Application.UseCases.UseExpense.Queries.Get;
 using Financeiro.Application.UseCases.UseIncome.Commands.Add;
 using Financeiro.Application.UseCases.UseIncome.Commands.Delete;
 using Financeiro.Application.UseCases.UseIncome.Commands.Update;
-using Financeiro.Application.UseCases.UseIncome.Queries;
+using Financeiro.Application.UseCases.UseIncome.Queries.Get;
 using Financeiro.Application.UseCases.UseMonthlySummary;
 using Microsoft.Extensions.DependencyInjection;
 
