@@ -3,7 +3,7 @@ using Financeiro.Application.Interfaces;
 using Financeiro.Application.Interfaces.Repositories;
 using Financeiro.Domain.Exceptions;
 
-namespace Financeiro.Application.UseCases.UseIncome;
+namespace Financeiro.Application.UseCases.UseIncome.Commands;
 
 public class UpdateIncomeUseCase
 {
