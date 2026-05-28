@@ -1,4 +1,4 @@
-﻿using Financeiro.Application.UseCases;
+﻿using Financeiro.Application.UseCases.UseMonthlySummary;
 using System.Security.Claims;
 
 namespace Financeiro.App.Endpoints;

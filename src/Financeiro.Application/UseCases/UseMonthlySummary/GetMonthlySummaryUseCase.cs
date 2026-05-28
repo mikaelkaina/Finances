@@ -1,7 +1,6 @@
-﻿using Financeiro.Application.DTOs;
-using Financeiro.Application.Interfaces.Repositories;
+﻿using Financeiro.Application.Interfaces.Repositories;
 
-namespace Financeiro.Application.UseCases;
+namespace Financeiro.Application.UseCases.UseMonthlySummary;
 
 public class GetMonthlySummaryUseCase
 {

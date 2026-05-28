@@ -1,4 +1,4 @@
-﻿using Financeiro.Application.DTOs;
+﻿using Financeiro.Application.UseCases.UseMonthlySummary;
 using System.Net.Http.Json;
 
 namespace Financeiro.App.Client.Services;

@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.DTOs;
+﻿namespace Financeiro.Application.UseCases.UseMonthlySummary;
 
 public record MonthlySummaryOutput(
     decimal TotalIncome,
