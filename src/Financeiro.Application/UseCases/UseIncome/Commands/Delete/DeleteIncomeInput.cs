@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.UseCases.UseExpense.Commands.Delete;
+﻿namespace Financeiro.Application.UseCases.UseIncome.Commands.Delete;
 
 public record DeleteIncomeInput(
     Guid IncomeId,
