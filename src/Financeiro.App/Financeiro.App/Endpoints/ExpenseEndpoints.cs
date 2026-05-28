@@ -1,5 +1,7 @@
 ﻿using Financeiro.Application.DTOs.Expense;
-using Financeiro.Application.UseCases.UseExpense.Commands;
+using Financeiro.Application.UseCases.UseExpense.Commands.Add;
+using Financeiro.Application.UseCases.UseExpense.Commands.Delete;
+using Financeiro.Application.UseCases.UseExpense.Commands.Update;
 using Financeiro.Application.UseCases.UseExpense.Queries;
 using System.Security.Claims;
 
