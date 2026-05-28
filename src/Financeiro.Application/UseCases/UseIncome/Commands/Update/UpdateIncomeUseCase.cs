@@ -1,9 +1,8 @@
 ﻿using Financeiro.Application.Interfaces;
 using Financeiro.Application.Interfaces.Repositories;
-using Financeiro.Application.UseCases.UseExpense.Commands.Update;
 using Financeiro.Domain.Exceptions;
 
-namespace Financeiro.Application.UseCases.UseIncome.Commands;
+namespace Financeiro.Application.UseCases.UseIncome.Commands.Update;
 
 public class UpdateIncomeUseCase
 {

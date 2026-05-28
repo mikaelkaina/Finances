@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.UseCases.UseExpense.Commands.Add;
+﻿namespace Financeiro.Application.UseCases.UseIncome.Commands.Add;
 
 public record AddIncomeInput(
     string UserId,

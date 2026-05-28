@@ -1,5 +1,5 @@
 ﻿using Financeiro.Application.Interfaces.Repositories;
-using Financeiro.Application.UseCases.UseExpense.Queries.Get;
+using Financeiro.Application.UseCases.UseIncome.Queries.Get;
 
 namespace Financeiro.Application.UseCases.UseIncome.Queries;
 

@@ -1,9 +1,8 @@
 ﻿using Financeiro.Application.Interfaces;
 using Financeiro.Application.Interfaces.Repositories;
-using Financeiro.Application.UseCases.UseExpense.Commands.Add;
 using Financeiro.Domain.Entities;
 
-namespace Financeiro.Application.UseCases.UseIncome.Commands;
+namespace Financeiro.Application.UseCases.UseIncome.Commands.Add;
 
 public class AddIncomeUseCase
 {
