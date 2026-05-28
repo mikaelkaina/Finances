@@ -3,19 +3,20 @@ using Financeiro.Application.Interfaces;
 using Financeiro.Application.Interfaces.Repositories;
 using Financeiro.Domain.Exceptions;
 
-namespace Financeiro.Application.UseCases.UseExpense.Commands;
+namespace Financeiro.Application.UseCases.UseExpense.Commands.Update;
 
-public class DeleteExpenseUseCase
+public class UpdateExpenseUseCase
 {
     private readonly IExpenseRepository _repository;
     private readonly IUnitOfWork _unitOfWork;
-    public DeleteExpenseUseCase(IExpenseRepository repository, IUnitOfWork unitOfWork)
+
+    public UpdateExpenseUseCase(IExpenseRepository repository, IUnitOfWork unitOfWork)
     {
         _repository = repository;
         _unitOfWork = unitOfWork;
     }
 
-    public async Task ExecuteAsync(DeleteExpenseInput input)
+    public async Task ExecuteAsync(UpdateExpenseInput input)
     {
         var expense = await _repository.GetByIdAsync(input.ExpenseId);
 
@@ -23,9 +24,10 @@ public class DeleteExpenseUseCase
             throw new DomainException("Despesa não encontrada.");
 
         if (expense.UserId != input.UserId)
-            throw new DomainException("Usuário não autorizado a deletar esta despesa.");
+            throw new DomainException("Você não tem permissão para editar esta receita.");
 
-        _repository.Remove(expense);
+        expense.UpdateExpense(input.Amount, input.Description, input.Date);
         await _unitOfWork.SaveChangesAsync();
+
     }
 }

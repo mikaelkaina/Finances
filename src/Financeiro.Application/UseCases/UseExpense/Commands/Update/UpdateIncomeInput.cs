@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.DTOs.Income;
+﻿namespace Financeiro.Application.UseCases.UseExpense.Commands.Update;
 
 public record UpdateIncomeInput(
     Guid IncomeId,

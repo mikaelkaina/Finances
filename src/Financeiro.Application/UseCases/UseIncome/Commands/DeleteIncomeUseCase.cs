@@ -1,6 +1,6 @@
-﻿using Financeiro.Application.DTOs.Income;
-using Financeiro.Application.Interfaces;
+﻿using Financeiro.Application.Interfaces;
 using Financeiro.Application.Interfaces.Repositories;
+using Financeiro.Application.UseCases.UseExpense.Commands.Delete;
 using Financeiro.Domain.Exceptions;
 
 namespace Financeiro.Application.UseCases.UseIncome.Commands;
