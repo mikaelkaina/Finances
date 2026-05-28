@@ -1,7 +1,7 @@
 ﻿using Financeiro.Application.DTOs.Expense;
 using Financeiro.Application.Interfaces.Repositories;
 
-namespace Financeiro.Application.UseCases.UseExpense.Queries;
+namespace Financeiro.Application.UseCases.UseExpense.Queries.Get;
 
 public class GetExpensesUseCase
 {
