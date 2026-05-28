@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.DTOs.Expense;
+﻿namespace Financeiro.Application.UseCases.UseExpense.Commands.Update;
 
 public record UpdateExpenseInput(
     Guid ExpenseId,

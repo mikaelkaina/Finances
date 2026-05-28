@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.DTOs.Expense;
+﻿namespace Financeiro.Application.UseCases.UseExpense.Commands.Delete;
 
 public record DeleteExpenseInput(
     Guid ExpenseId,
