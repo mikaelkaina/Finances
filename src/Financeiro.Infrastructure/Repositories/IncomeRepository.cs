@@ -1,5 +1,5 @@
-﻿using Financeiro.Application.Interfaces.Repositories;
-using Financeiro.Domain.Entities;
+﻿using Financeiro.Domain.Entities;
+using Financeiro.Domain.Interfaces.Repositories;
 using Financeiro.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 

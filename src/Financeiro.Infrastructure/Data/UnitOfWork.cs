@@ -1,4 +1,4 @@
-﻿using Financeiro.Application.Interfaces;
+﻿using Financeiro.Domain.Interfaces;
 
 namespace Financeiro.Infrastructure.Data;
 

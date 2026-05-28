@@ -1,7 +1,7 @@
 ﻿using Financeiro.Application.UseCases.UseIncome.Commands.Add;
 using Financeiro.Application.UseCases.UseIncome.Commands.Delete;
 using Financeiro.Application.UseCases.UseIncome.Commands.Update;
-using Financeiro.Application.UseCases.UseIncome.Queries;
+using Financeiro.Application.UseCases.UseIncome.Queries.Get;
 using System.Security.Claims;
 
 namespace Financeiro.App.Endpoints;

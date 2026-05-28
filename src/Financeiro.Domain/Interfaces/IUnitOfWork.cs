@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.Interfaces;
+﻿namespace Financeiro.Domain.Interfaces;
 
 public interface IUnitOfWork
 {

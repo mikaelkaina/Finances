@@ -1,4 +1,4 @@
-﻿using Financeiro.Application.Interfaces.Repositories;
+﻿using Financeiro.Domain.Interfaces.Repositories;
 
 namespace Financeiro.Application.UseCases.UseExpense.Queries.Get;
 
