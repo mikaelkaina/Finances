@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.DTOs.Expense;
+﻿namespace Financeiro.Application.UseCases.UseExpense.Commands.Add;
 
 public record AddExpenseInput(
     string UserId,

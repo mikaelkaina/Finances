@@ -1,5 +1,4 @@
-﻿using Financeiro.Application.DTOs.Expense;
-using Financeiro.Application.Interfaces.Repositories;
+﻿using Financeiro.Application.Interfaces.Repositories;
 
 namespace Financeiro.Application.UseCases.UseExpense.Queries.Get;
 
