@@ -1,7 +1,7 @@
 ﻿using Financeiro.Application.DTOs.Income;
 using Financeiro.Application.Interfaces.Repositories;
 
-namespace Financeiro.Application.UseCases.UseIncome;
+namespace Financeiro.Application.UseCases.UseIncome.Queries;
 
 public class GetIncomesUseCase
 {
