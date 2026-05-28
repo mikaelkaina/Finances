@@ -1,4 +1,4 @@
-﻿namespace Financeiro.Application.DTOs.Income;
+﻿namespace Financeiro.Application.UseCases.UseExpense.Queries.Get;
 
 public record IncomeListItemOutput(
     Guid Id,
