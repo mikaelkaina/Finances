@@ -12,9 +12,9 @@ public class ExpenseRepository : IExpenseRepository
     {
         _context = context;
     }
-    public async Task AddAsync(Expense expense)
+    public void Add(Expense expense)
     {
-        await _context.Expenses.AddAsync(expense);
+        _context.Expenses.Add(expense);
     }
 
     public async Task<Expense?> GetByIdAsync(Guid id)

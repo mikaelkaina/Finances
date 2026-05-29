@@ -12,9 +12,9 @@ public class IncomeRepository : IIncomeRepository
     {
         _context = context;
     }
-    public async Task AddAsync(Income income)
+    public void Add(Income income)
     {
-        await _context.Incomes.AddAsync(income);
+         _context.Incomes.Add(income);
     }
 
     public async Task<Income?> GetByIdAsync(Guid id)
