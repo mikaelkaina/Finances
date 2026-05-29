@@ -4,7 +4,7 @@ namespace Financeiro.Domain.Interfaces.Repositories;
 
 public interface IIncomeRepository 
 {
-    Task AddAsync(Income income);
+    void Add(Income income);
     Task<decimal> GetTotalByMonthAsync(string userId, int month, int year);
     Task<IEnumerable<Income>> GetByUserAsync(string userId);
     Task<Income?> GetByIdAsync(Guid id);
