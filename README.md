@@ -13,6 +13,7 @@ Tecnologias
 - Entity Framework Core
 - Clean Architecture
 - Domain-Driven Design (DDD)
+- CQRS
 - Unit of Work
 
 
