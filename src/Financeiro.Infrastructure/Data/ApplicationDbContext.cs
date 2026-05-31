@@ -5,13 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Financeiro.Infrastructure.Data;
 
-public class ApplicationDbContext
-    : IdentityDbContext<ApplicationUser>
+public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
 {
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     public DbSet<Income> Incomes => Set<Income>();
     public DbSet<Expense> Expenses => Set<Expense>();
