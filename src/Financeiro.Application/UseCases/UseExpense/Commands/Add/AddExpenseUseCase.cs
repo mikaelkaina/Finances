@@ -24,8 +24,8 @@ public class AddExpenseUseCase
             input.Description,
             input.Date
         );
-
-        await _repository.AddAsync(expense);
+        
+        _repository.Add(expense);
         await _unitOfWork.SaveChangesAsync();
     }
 }
