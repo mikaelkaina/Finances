@@ -1,4 +1,5 @@
-﻿using Financeiro.Domain.Interfaces.Repositories;
+﻿using Financeiro.Domain.Interfaces;
+using Financeiro.Domain.Interfaces.Repositories;
 using Financeiro.Infrastructure.Data;
 using Financeiro.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Identity;
@@ -22,6 +23,7 @@ public static class DependencyInjection
 
         services.AddScoped<IIncomeRepository, IncomeRepository>();
         services.AddScoped<IExpenseRepository, ExpenseRepository>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         services.AddIdentityCore<ApplicationUser>(options =>
         {

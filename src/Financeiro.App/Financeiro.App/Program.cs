@@ -3,7 +3,6 @@ using Financeiro.App.Components;
 using Financeiro.App.Components.Account;
 using Financeiro.App.Endpoints;
 using Financeiro.Application;
-using Financeiro.Domain.Interfaces;
 using Financeiro.Infrastructure;
 using Financeiro.Infrastructure.Data;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -19,8 +18,6 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
-
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 builder.Services.AddAuthentication(options =>
 {
