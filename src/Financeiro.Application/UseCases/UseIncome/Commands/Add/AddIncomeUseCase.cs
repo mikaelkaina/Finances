@@ -23,8 +23,8 @@ public class AddIncomeUseCase
             input.Description,
             input.Date
         );
-
-        await _repository.AddAsync(income);
+        
+        _repository.Add(income);
         await _unitOfWork.SaveChangesAsync();
     }
 }
