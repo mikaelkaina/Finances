@@ -1,6 +1,7 @@
 ﻿using Financeiro.Domain.Exceptions;
 using Financeiro.Domain.Interfaces;
 using Financeiro.Domain.Interfaces.Repositories;
+using Menso.Tools.Exceptions;
 
 namespace Financeiro.Application.UseCases.UseIncome.Commands.Update;
 
@@ -18,12 +19,7 @@ public class UpdateIncomeUseCase
     public async Task ExecuteAsync(UpdateIncomeInput input)
     {
         var income = await _repository.GetByIdAsync(input.IncomeId);
-
-        if (income is null)
-            throw new DomainException("Receita não encontrada.");
-
-        if(income.UserId != input.UserId)
-            throw new DomainException("Você não tem permissão para editar esta receita.");
+        Throw.When.Null(income, ResourceIncome.ExpenseNotFound);
 
         income.UpdateIncome(input.Amount, input.Description, input.Date);
         await _unitOfWork.SaveChangesAsync();

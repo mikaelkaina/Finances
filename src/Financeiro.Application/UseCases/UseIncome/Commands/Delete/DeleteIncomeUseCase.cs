@@ -1,6 +1,7 @@
 ﻿using Financeiro.Domain.Interfaces;
 using Financeiro.Domain.Exceptions;
 using Financeiro.Domain.Interfaces.Repositories;
+using Menso.Tools.Exceptions;
 
 namespace Financeiro.Application.UseCases.UseIncome.Commands.Delete;
 
@@ -18,12 +19,7 @@ public class DeleteIncomeUseCase
     public async Task ExecuteAsync(DeleteIncomeInput input)
     {
         var income = await _repository.GetByIdAsync(input.IncomeId);
-
-        if (income is null)
-            throw new DomainException("Receita não encontrada.");
-
-        if (income.UserId != input.UserId)
-            throw new DomainException("Você não tem permissão para apagar esta receita.");
+        Throw.When.Null(income, ResourceIncome.ExpenseNotFound);
 
         _repository.Remove(income);
         await _unitOfWork.SaveChangesAsync();
