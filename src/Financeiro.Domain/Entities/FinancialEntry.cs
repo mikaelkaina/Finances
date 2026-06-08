@@ -1,5 +1,4 @@
-﻿using Financeiro.Domain.Exceptions;
-using Menso.Tools.Exceptions;
+﻿using Menso.Tools.Exceptions;
 
 namespace Financeiro.Domain.Entities;
 
@@ -33,7 +32,7 @@ public abstract class FinancialEntry
 
     private static void Validate(string userId, decimal amount, DateTime date)
     {
-        Throw.When.NullOrEmpty(userId, "UserID is required.");
+        Throw.When.NullOrWhiteSpace(userId, "UserID is required.");
         Throw.When.True(amount <= 0, "Amount must be greater than zero.");
         Throw.When.True(date.Date > DateTime.UtcNow.Date, "Date cannot be in the future.");
     }

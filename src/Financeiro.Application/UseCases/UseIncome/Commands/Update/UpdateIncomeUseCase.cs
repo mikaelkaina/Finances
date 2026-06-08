@@ -1,5 +1,4 @@
-﻿using Financeiro.Domain.Exceptions;
-using Financeiro.Domain.Interfaces;
+﻿using Financeiro.Domain.Interfaces;
 using Financeiro.Domain.Interfaces.Repositories;
 using Menso.Tools.Exceptions;
 
